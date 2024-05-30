@@ -26,4 +26,4 @@ SELECT product.name, order.status, order.datetime
 FROM mydb.order_has_product
 join product ON order_has_product.product_id = product.id
 join mydb.order ON order_has_product.order_id = order.id
-WHERE product.Restaurant = 'Кинг фуд' ;
+WHERE product.Restaurant = 'Кинг фуд'  ;
