@@ -38,12 +38,12 @@ FROM mydb.deliveryman
 order by deliveryman.Orders DESC
 limit 1;
 ```
--- Запрос на просмотр заказов из ресторана "Кинг фуд"
+-- Запрос на просмотр заказов из ресторана "Кафе "Гриль Хаус""
 ```
 SELECT product.name, order.status, order.datetime
 FROM mydb.order_has_product
 join product ON order_has_product.product_id = product.id
 join mydb.order ON order_has_product.order_id = order.id
-WHERE product.Restaurant = 'Кинг фуд' ;
+WHERE product.Restaurant = 'Кафе "Гриль Хаус"' ;
 
 ```
