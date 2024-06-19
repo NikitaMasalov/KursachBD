@@ -6,11 +6,14 @@ ER-диаграмма:
 
 Типовые запросы:
 
--- Типовой запрос на пользователей оплачивующих покупки наличкой
+-- Запрос на получение самых популярных продуктов:
 ```
-SELECT * 
-FROM mydb.user
-where user.payment = 'Cash';
+SELECT p.name, COUNT(*) AS order_count
+FROM orders_has_product op
+JOIN product p ON op.product_id = p.id
+GROUP BY op.product_id
+ORDER BY order_count DESC
+LIMIT 10;
 ```
 -- Самые дешевое блюдо из категории Пицца
 ```
