@@ -2,7 +2,8 @@
 
 ER-диаграмма:
 
-![image](https://github.com/NikitaMasalov/KursachBD/assets/118043414/d18e58e4-631d-4af9-9b64-e8d0e692abb5)
+![Uploading image.png…]()
+
 
 Типовые запросы:
 
