@@ -15,13 +15,13 @@ GROUP BY op.product_id
 ORDER BY order_count DESC
 LIMIT 10;
 ```
--- Самые дешевое блюдо из категории Пицца
+-- Самые дешевое блюдо из категории Пиццы
 ```
 SELECT *
 FROM mydb.category_has_product
 join product ON category_has_product.product_id = product.id
 join category on category_has_product.Category_id = category.id
-where category = "Пицца"
+where category = "Пиццы"
 order by product.price ASC
 limit 1;
 ```
