@@ -2,8 +2,7 @@
 
 ER-диаграмма:
 
-![Uploading image.png…]()
-
+![image](https://github.com/NikitaMasalov/KursachBD/assets/118043414/c4a5c434-4d2c-4765-b4cc-568edf35321b)
 
 Типовые запросы:
 
@@ -47,4 +46,30 @@ join product ON order_has_product.product_id = product.id
 join mydb.order ON order_has_product.order_id = order.id
 WHERE product.Restaurant = 'Кафе "Гриль Хаус"' ;
 
+```
+-- Транзакция для создания заказа
+```
+START TRANSACTION;
+
+SELECT address INTO @user_address FROM user WHERE id = 3;
+
+INSERT INTO orders (price, status, address, payment, order_time, user_id)
+VALUES (0.00, 'accepted', @user_address, 'Online', NOW(), 3);
+
+SET @order_id = LAST_INSERT_ID();
+
+INSERT INTO orders_has_product (orders_id, product_id, Count)
+VALUES (@order_id, 4, 2), (@order_id, 3, 1);
+
+SELECT SUM(p.price * o.Count) INTO @total_price
+FROM orders_has_product o
+JOIN product p ON o.product_id = p.id
+WHERE o.orders_id = @order_id;
+
+UPDATE orders
+SET price = @total_price,
+order_time = NOW()
+WHERE id = @order_id;
+
+COMMIT;
 ```
