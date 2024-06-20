@@ -38,7 +38,7 @@ where order.deliveryman_id IS NULL;
 ```
 SELECT * 
 FROM mydb.deliveryman
-order by deliveryman.Orders DESC
+order by deliveryman.orders_mouth DESC
 limit 1;
 ```
 -- Запрос на просмотр заказов из ресторана "Кафе "Гриль Хаус""
